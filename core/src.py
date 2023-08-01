@@ -34,6 +34,14 @@ def register():
 
         import re
         # 2.3、校验用户名是否合法
+        if not re.findall('^[a-zA-Z]\w{2,9}$', username):
+            print('用户名长度必须为3-10个字符！\n只能是数字、字母、下划线组合')
+            continue
+
+        # 2.4、校验密码强度
+        if not re.findall('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$', password):
+            print('\n密码太弱，必须包含大写字母、小写字母及数字，并且长度必须为8-16位')
+            continue
 
 
 
