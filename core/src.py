@@ -4,7 +4,7 @@
 """
 用户视图层
 """
-
+from interface import user_interface
 
 # 0、退出
 def sign_out():
@@ -39,9 +39,16 @@ def register():
             continue
 
         # 2.4、校验密码强度
-        if not re.findall('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$', password):
-            print('\n密码太弱，必须包含大写字母、小写字母及数字，并且长度必须为8-16位')
-            continue
+        # if not re.findall('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$', password):
+        #     print('\n密码太弱，必须包含大写字母、小写字母及数字，并且长度必须为8-16位')
+        #     continue
+
+        # 3、调用注册接口注册
+        flag, msg = user_interface.register_interface(username, password)
+        print(msg)
+        if flag:
+            break
+        continue
 
 
 
